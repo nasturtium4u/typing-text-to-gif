@@ -1,0 +1,674 @@
+* {
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    color: #e5e7eb;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #1e293b 0%,
+            #0f172a 45%,
+            #020617 100%
+        );
+}
+
+
+/* =========================
+   ОСНОВНОЙ КОНТЕЙНЕР
+   ========================= */
+
+.container {
+    width: 100%;
+    max-width: 1100px;
+
+    margin: 0 auto;
+    padding: 24px;
+}
+
+
+/* =========================
+   HEADER
+   ========================= */
+
+.header {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+
+.header h1 {
+    margin: 0 0 10px;
+
+    font-size: clamp(
+        28px,
+        5vw,
+        48px
+    );
+
+    line-height: 1.1;
+}
+
+
+.header p {
+    max-width: 700px;
+
+    margin: 0 auto;
+
+    color: #94a3b8;
+
+    line-height: 1.6;
+}
+
+
+/* =========================
+   РЕКЛАМА
+   ========================= */
+
+.ad-wrapper {
+    width: 100%;
+
+    margin: 18px 0;
+
+    display: flex;
+    justify-content: center;
+
+    overflow: hidden;
+}
+
+
+.ad-box {
+    width: 100%;
+
+    min-height: 90px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    border-radius: 14px;
+
+    background:
+        rgba(13, 18, 29, 0.55);
+
+    border:
+        1px solid rgba(
+            255,
+            255,
+            255,
+            0.05
+        );
+}
+
+
+.ad-placeholder {
+    width: 100%;
+
+    text-align: center;
+
+    color: #59647b;
+
+    font-size: 11px;
+}
+
+
+/* =========================
+   CARD
+   ========================= */
+
+.card {
+    width: 100%;
+
+    padding: 24px;
+
+    border-radius: 20px;
+
+    background:
+        rgba(15, 23, 42, 0.85);
+
+    border:
+        1px solid rgba(
+            255,
+            255,
+            255,
+            0.07
+        );
+
+    box-shadow:
+        0 20px 60px
+        rgba(0, 0, 0, 0.25);
+}
+
+
+.card h2 {
+    margin-top: 0;
+}
+
+
+/* =========================
+   TEXTAREA
+   ========================= */
+
+textarea {
+    width: 100%;
+
+    min-height: 300px;
+
+    padding: 18px;
+
+    resize: vertical;
+
+    border: 1px solid #334155;
+    border-radius: 14px;
+
+    outline: none;
+
+    background: #020617;
+
+    color: #f8fafc;
+
+    font-family:
+        "Courier New",
+        Courier,
+        monospace;
+
+    font-size: 18px;
+
+    line-height: 1.5;
+
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s;
+}
+
+
+textarea:focus {
+    border-color: #60a5fa;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(
+            96,
+            165,
+            250,
+            0.12
+        );
+}
+
+
+textarea::placeholder {
+    color: #475569;
+}
+
+
+/* =========================
+   CONTROLS
+   ========================= */
+
+.controls {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            4,
+            minmax(0, 1fr)
+        );
+
+    gap: 14px;
+
+    margin-top: 20px;
+}
+
+
+.control-group {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+
+.control-group label {
+    color: #94a3b8;
+
+    font-size: 13px;
+}
+
+
+.control-group input,
+.control-group select {
+    width: 100%;
+
+    min-height: 42px;
+
+    padding: 8px 10px;
+
+    border: 1px solid #334155;
+    border-radius: 9px;
+
+    background: #0f172a;
+
+    color: #f8fafc;
+
+    outline: none;
+}
+
+
+.control-group input:focus,
+.control-group select:focus {
+    border-color: #60a5fa;
+}
+
+
+.control-group input[type="color"] {
+    padding: 3px;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   BUTTONS
+   ========================= */
+
+.buttons {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-top: 20px;
+}
+
+
+button {
+    min-height: 44px;
+
+    padding: 10px 18px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    transition:
+        transform 0.15s,
+        opacity 0.15s;
+}
+
+
+button:hover {
+    transform: translateY(-1px);
+}
+
+
+button:active {
+    transform: translateY(0);
+}
+
+
+button:disabled {
+    opacity: 0.5;
+
+    cursor: not-allowed;
+
+    transform: none;
+}
+
+
+.primary {
+    background: #3b82f6;
+
+    color: white;
+}
+
+
+.secondary {
+    background: #1e293b;
+
+    color: #cbd5e1;
+
+    border:
+        1px solid #334155;
+}
+
+
+/* =========================
+   STATS
+   ========================= */
+
+.stats {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 12px;
+
+    margin-top: 20px;
+}
+
+
+.stat {
+    padding: 14px;
+
+    border-radius: 12px;
+
+    background:
+        rgba(
+            2,
+            6,
+            23,
+            0.7
+        );
+
+    border:
+        1px solid rgba(
+            255,
+            255,
+            255,
+            0.05
+        );
+}
+
+
+.stat-label {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #64748b;
+
+    font-size: 12px;
+}
+
+
+.stat-value {
+    color: #f8fafc;
+
+    font-size: 18px;
+
+    font-weight: 600;
+}
+
+
+/* =========================
+   PROGRESS
+   ========================= */
+
+.progress-wrap {
+    margin-top: 20px;
+}
+
+
+.hidden {
+    display: none !important;
+}
+
+
+.progress {
+    width: 100%;
+
+    height: 10px;
+
+    overflow: hidden;
+
+    border-radius: 999px;
+
+    background: #1e293b;
+}
+
+
+.progress-bar {
+    width: 0%;
+
+    height: 100%;
+
+    border-radius: inherit;
+
+    background: #3b82f6;
+
+    transition:
+        width 0.15s ease;
+}
+
+
+.progress-info {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-top: 7px;
+
+    color: #94a3b8;
+
+    font-size: 12px;
+}
+
+
+/* =========================
+   PREVIEW
+   ========================= */
+
+.preview-container {
+    margin-top: 30px;
+}
+
+
+.preview {
+    min-height: 150px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    overflow: hidden;
+
+    padding: 15px;
+
+    border-radius: 14px;
+
+    background: #020617;
+
+    border:
+        1px solid #1e293b;
+
+    color: #64748b;
+
+    text-align: center;
+}
+
+
+.preview img {
+    display: block;
+
+    max-width: 100%;
+
+    height: auto;
+
+    border-radius: 8px;
+}
+
+
+/* =========================
+   STATUS
+   ========================= */
+
+.status {
+    margin-top: 15px;
+
+    color: #94a3b8;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================
+   NOTICE
+   ========================= */
+
+.notice {
+    margin: 18px 0 30px;
+
+    padding: 14px 16px;
+
+    border-radius: 12px;
+
+    background:
+        rgba(
+            30,
+            41,
+            59,
+            0.5
+        );
+
+    color: #94a3b8;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+}
+
+
+.notice code {
+    padding: 2px 5px;
+
+    border-radius: 4px;
+
+    background: #020617;
+
+    color: #cbd5e1;
+}
+
+
+/* =========================
+   TABLET
+   ========================= */
+
+@media (
+    max-width: 800px
+) {
+
+    .container {
+        padding: 16px;
+    }
+
+
+    .controls {
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+    }
+
+
+    .card {
+        padding: 18px;
+    }
+
+}
+
+
+/* =========================
+   MOBILE
+   ========================= */
+
+@media (
+    max-width: 550px
+) {
+
+    .container {
+        padding: 10px;
+    }
+
+
+    .header {
+        margin-bottom: 15px;
+    }
+
+
+    .header h1 {
+        font-size: 30px;
+    }
+
+
+    .header p {
+        font-size: 14px;
+    }
+
+
+    .card {
+        padding: 14px;
+
+        border-radius: 15px;
+    }
+
+
+    textarea {
+        min-height: 240px;
+
+        padding: 13px;
+
+        font-size: 16px;
+    }
+
+
+    .controls {
+        grid-template-columns: 1fr;
+
+        gap: 10px;
+    }
+
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+
+    .buttons {
+        flex-direction: column;
+    }
+
+
+    button {
+        width: 100%;
+    }
+
+
+    .ad-box {
+        min-height: 70px;
+    }
+
+}

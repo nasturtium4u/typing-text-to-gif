@@ -1,0 +1,2705 @@
+<html>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Text → Typing GIF</title>
+
+
+    <!-- =====================================================
+         ЯНДЕКС РЕКЛАМА
+         =====================================================
+
+         После добавления сайта в РСЯ и создания рекламных
+         блоков вставь сюда загрузчик Яндекса.
+
+         Код ниже — стандартный пример.
+         Если РСЯ выдаст тебе другой код, используй именно
+         тот код, который выдаст кабинет.
+
+         ===================================================== -->
+
+    <!--
+    <script>
+        window.yaContextCb = window.yaContextCb || [];
+    </script>
+
+    <script
+        src="https://yandex.ru/ads/system/context.js"
+        async>
+    </script>
+    -->
+
+
+    <!-- =====================================================
+         ЛОКАЛЬНЫЙ GIF.JS
+         ===================================================== -->
+
+    <script src="./gif.js"></script>
+
+
+    <style>
+
+        /* =====================================================
+           RESET
+           ===================================================== */
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100%;
+        }
+
+
+        /* =====================================================
+           BODY
+           ===================================================== */
+
+        body {
+
+            font-family:
+                Inter,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Arial,
+                sans-serif;
+
+            background:
+                radial-gradient(
+                    circle at top,
+                    #26304a 0%,
+                    #111522 45%,
+                    #080b12 100%
+                );
+
+            color: #ffffff;
+
+            padding:
+                30px 20px;
+        }
+
+
+        /* =====================================================
+           MAIN CONTAINER
+           ===================================================== */
+
+        .container {
+
+            width:
+                min(1100px, 100%);
+
+            margin:
+                0 auto;
+        }
+
+
+        /* =====================================================
+           HEADER
+           ===================================================== */
+
+        .header {
+
+            margin-bottom:
+                25px;
+        }
+
+
+        .header h1 {
+
+            margin:
+                0 0 8px;
+
+            font-size:
+                clamp(28px, 5vw, 46px);
+
+            line-height:
+                1.1;
+
+            letter-spacing:
+                -1px;
+        }
+
+
+        .header p {
+
+            margin:
+                0;
+
+            color:
+                #aeb7cc;
+
+            font-size:
+                16px;
+
+            line-height:
+                1.5;
+        }
+
+
+        /* =====================================================
+           ADVERTISEMENT
+           ===================================================== */
+
+        .ad-wrapper {
+
+            width:
+                100%;
+
+            margin:
+                18px 0;
+
+            display:
+                flex;
+
+            justify-content:
+                center;
+
+            overflow:
+                hidden;
+        }
+
+
+        .ad-box {
+
+            width:
+                100%;
+
+            max-width:
+                100%;
+
+            min-height:
+                90px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            overflow:
+                hidden;
+
+            border-radius:
+                14px;
+
+            background:
+                rgba(
+                    13,
+                    18,
+                    29,
+                    0.55
+                );
+
+            border:
+                1px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.05
+                );
+        }
+
+
+        /*
+            Пока рекламный блок не подключён,
+            показываем нейтральный placeholder.
+
+            После подключения РСЯ его можно удалить.
+        */
+
+        .ad-placeholder {
+
+            width:
+                100%;
+
+            text-align:
+                center;
+
+            color:
+                #59647b;
+
+            font-size:
+                11px;
+
+            letter-spacing:
+                0.3px;
+        }
+
+
+        /* =====================================================
+           CARD
+           ===================================================== */
+
+        .card {
+
+            background:
+                rgba(
+                    20,
+                    25,
+                    39,
+                    0.92
+                );
+
+            border:
+                1px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.09
+                );
+
+            border-radius:
+                20px;
+
+            padding:
+                24px;
+
+            box-shadow:
+                0 20px 70px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    0.35
+                ),
+
+                inset 0 1px 0
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.03
+                );
+
+            backdrop-filter:
+                blur(15px);
+        }
+
+
+        /* =====================================================
+           EDITOR
+           ===================================================== */
+
+        .editor-label {
+
+            display:
+                block;
+
+            font-size:
+                14px;
+
+            color:
+                #aeb7cc;
+
+            margin-bottom:
+                9px;
+
+            font-weight:
+                600;
+        }
+
+
+        textarea {
+
+            display:
+                block;
+
+            width:
+                100%;
+
+            min-height:
+                300px;
+
+            resize:
+                vertical;
+
+            padding:
+                18px;
+
+            border:
+                1px solid
+                #323b52;
+
+            border-radius:
+                14px;
+
+            outline:
+                none;
+
+            background:
+                #0b0f18;
+
+            color:
+                #f4f7ff;
+
+            font-family:
+                "SFMono-Regular",
+                Consolas,
+                "Liberation Mono",
+                Menlo,
+                monospace;
+
+            font-size:
+                16px;
+
+            line-height:
+                1.65;
+
+            transition:
+                border-color .2s,
+                box-shadow .2s;
+        }
+
+
+        textarea:focus {
+
+            border-color:
+                #647cff;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(
+                    100,
+                    124,
+                    255,
+                    0.12
+                );
+        }
+
+
+        /* =====================================================
+           CONTROLS
+           ===================================================== */
+
+        .controls {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap:
+                14px;
+
+            margin-top:
+                18px;
+        }
+
+
+        .control {
+
+            background:
+                #0d121d;
+
+            border:
+                1px solid
+                #272f43;
+
+            border-radius:
+                13px;
+
+            padding:
+                13px;
+        }
+
+
+        .control label {
+
+            display:
+                block;
+
+            font-size:
+                12px;
+
+            color:
+                #929db6;
+
+            margin-bottom:
+                7px;
+        }
+
+
+        .control input,
+        .control select {
+
+            width:
+                100%;
+
+            border:
+                0;
+
+            outline:
+                0;
+
+            background:
+                transparent;
+
+            color:
+                white;
+
+            font-size:
+                15px;
+        }
+
+
+        .control input[type="number"] {
+
+            appearance:
+                textfield;
+        }
+
+
+        .control input[type="color"] {
+
+            height:
+                30px;
+
+            padding:
+                0;
+
+            cursor:
+                pointer;
+        }
+
+
+        /* =====================================================
+           BUTTONS
+           ===================================================== */
+
+        .buttons {
+
+            display:
+                flex;
+
+            flex-wrap:
+                wrap;
+
+            gap:
+                10px;
+
+            margin-top:
+                18px;
+        }
+
+
+        button {
+
+            border:
+                0;
+
+            border-radius:
+                11px;
+
+            padding:
+                12px 18px;
+
+            color:
+                white;
+
+            background:
+                #293248;
+
+            cursor:
+                pointer;
+
+            font-size:
+                14px;
+
+            font-weight:
+                700;
+
+            transition:
+                transform .15s,
+                background .15s,
+                opacity .15s;
+        }
+
+
+        button:hover {
+
+            background:
+                #35415d;
+
+            transform:
+                translateY(-1px);
+        }
+
+
+        button:active {
+
+            transform:
+                translateY(0);
+        }
+
+
+        button.primary {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #6175ff,
+                    #8b5cf6
+                );
+        }
+
+
+        button.primary:hover {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #7183ff,
+                    #996eff
+                );
+        }
+
+
+        button.danger {
+
+            background:
+                #492536;
+        }
+
+
+        button:disabled {
+
+            opacity:
+                .45;
+
+            cursor:
+                not-allowed;
+
+            transform:
+                none;
+        }
+
+
+        /* =====================================================
+           STATS
+           ===================================================== */
+
+        .stats {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap:
+                10px;
+
+            margin-top:
+                18px;
+        }
+
+
+        .stat {
+
+            background:
+                #0d121d;
+
+            border:
+                1px solid
+                #252d40;
+
+            border-radius:
+                12px;
+
+            padding:
+                13px;
+        }
+
+
+        .stat-title {
+
+            color:
+                #8994ac;
+
+            font-size:
+                12px;
+        }
+
+
+        .stat-value {
+
+            margin-top:
+                4px;
+
+            font-size:
+                18px;
+
+            font-weight:
+                700;
+        }
+
+
+        /* =====================================================
+           PROGRESS
+           ===================================================== */
+
+        .progress-wrap {
+
+            margin-top:
+                18px;
+
+            display:
+                none;
+        }
+
+
+        .progress-wrap.visible {
+
+            display:
+                block;
+        }
+
+
+        .progress-info {
+
+            display:
+                flex;
+
+            justify-content:
+                space-between;
+
+            color:
+                #929db6;
+
+            font-size:
+                12px;
+
+            margin-bottom:
+                7px;
+        }
+
+
+        .progress {
+
+            width:
+                100%;
+
+            height:
+                7px;
+
+            background:
+                #0a0e16;
+
+            border-radius:
+                100px;
+
+            overflow:
+                hidden;
+        }
+
+
+        .progress-bar {
+
+            height:
+                100%;
+
+            width:
+                0%;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #6276ff,
+                    #9b6cff
+                );
+
+            transition:
+                width .1s linear;
+        }
+
+
+        /* =====================================================
+           PREVIEW
+           ===================================================== */
+
+        .preview-section {
+
+            margin-top:
+                24px;
+        }
+
+
+        .preview-title {
+
+            display:
+                flex;
+
+            justify-content:
+                space-between;
+
+            align-items:
+                center;
+
+            gap:
+                10px;
+
+            margin-bottom:
+                10px;
+        }
+
+
+        .preview-title h2 {
+
+            margin:
+                0;
+
+            font-size:
+                18px;
+        }
+
+
+        .status {
+
+            color:
+                #9ca8bf;
+
+            font-size:
+                13px;
+        }
+
+
+        .preview {
+
+            width:
+                100%;
+
+            min-height:
+                300px;
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            border-radius:
+                14px;
+
+            border:
+                1px dashed
+                #30394f;
+
+            background:
+                #080b12;
+
+            overflow:
+                hidden;
+        }
+
+
+        .preview img {
+
+            display:
+                block;
+
+            max-width:
+                100%;
+
+            height:
+                auto;
+        }
+
+
+        .empty-preview {
+
+            color:
+                #59647b;
+
+            font-size:
+                14px;
+
+            text-align:
+                center;
+
+            padding:
+                40px;
+        }
+
+
+        /* =====================================================
+           NOTICE
+           ===================================================== */
+
+        .notice {
+
+            margin-top:
+                14px;
+
+            padding:
+                12px 14px;
+
+            border-radius:
+                10px;
+
+            background:
+                rgba(
+                    255,
+                    193,
+                    7,
+                    0.07
+                );
+
+            border:
+                1px solid
+                rgba(
+                    255,
+                    193,
+                    7,
+                    0.14
+                );
+
+            color:
+                #c6cbd6;
+
+            font-size:
+                12px;
+
+            line-height:
+                1.5;
+        }
+
+
+        /* =====================================================
+           TABLET
+           ===================================================== */
+
+        @media (max-width: 800px) {
+
+            .controls {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+        }
+
+
+        /* =====================================================
+           MOBILE
+           ===================================================== */
+
+        @media (max-width: 550px) {
+
+            body {
+
+                padding:
+                    15px;
+            }
+
+
+            .card {
+
+                padding:
+                    16px;
+
+                border-radius:
+                    16px;
+            }
+
+
+            .controls {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .stats {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            textarea {
+
+                min-height:
+                    240px;
+            }
+
+
+            .buttons {
+
+                flex-direction:
+                    column;
+            }
+
+
+            .buttons button {
+
+                width:
+                    100%;
+            }
+
+
+            .preview {
+
+                min-height:
+                    220px;
+            }
+
+
+            .ad-wrapper {
+
+                margin:
+                    12px 0;
+            }
+
+
+            .ad-box {
+
+                min-height:
+                    70px;
+
+                border-radius:
+                    10px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <!-- =====================================================
+         HEADER
+         ===================================================== -->
+
+    <div class="header">
+
+        <h1>
+            Text → Typing GIF
+        </h1>
+
+        <p>
+            Напишите текст, исправляйте опечатки и редактируйте его
+            как обычно. Сайт запишет каждое изменение и превратит
+            реальный процесс редактирования в GIF-анимацию.
+        </p>
+
+    </div>
+
+
+    <!-- =====================================================
+         РЕКЛАМА №1
+         ===================================================== -->
+
+    <div class="ad-wrapper">
+
+        <div class="ad-box">
+
+            <!--
+                =================================================
+                ВЕРХНИЙ БЛОК РСЯ
+                =================================================
+
+                После создания блока в РСЯ замени этот placeholder
+                на код, который выдаст Яндекс.
+
+                Пример структуры:
+
+                <div id="yandex_rtb_R-A-XXXXXXXX-1"></div>
+
+                <script>
+                    window.yaContextCb.push(() => {
+                        Ya.Context.AdvManager.render({
+                            "blockId": "R-A-XXXXXXXX-1",
+                            "renderTo": "yandex_rtb_R-A-XXXXXXXX-1"
+                        })
+                    })
+                </script>
+            -->
+
+            <div class="ad-placeholder">
+                Рекламный блок
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         MAIN CARD
+         ===================================================== -->
+
+    <div class="card">
+
+
+        <!-- =================================================
+             TEXTAREA
+             ================================================= -->
+
+        <label
+            class="editor-label"
+            for="textInput"
+        >
+            Текст
+        </label>
+
+
+        <textarea
+            id="textInput"
+            placeholder="Начните печатать здесь..."
+            spellcheck="false"
+        ></textarea>
+
+
+        <!-- =================================================
+             CONTROLS
+             ================================================= -->
+
+        <div class="controls">
+
+
+            <div class="control">
+
+                <label for="width">
+                    Ширина GIF
+                </label>
+
+                <input
+                    id="width"
+                    type="number"
+                    min="200"
+                    max="1600"
+                    value="800"
+                >
+
+            </div>
+
+
+            <div class="control">
+
+                <label for="height">
+                    Высота GIF
+                </label>
+
+                <input
+                    id="height"
+                    type="number"
+                    min="100"
+                    max="1200"
+                    value="450"
+                >
+
+            </div>
+
+
+            <div class="control">
+
+                <label for="fontSize">
+                    Размер шрифта
+                </label>
+
+                <input
+                    id="fontSize"
+                    type="number"
+                    min="10"
+                    max="100"
+                    value="28"
+                >
+
+            </div>
+
+
+            <div class="control">
+
+                <label for="fpsMode">
+                    Режим задержек
+                </label>
+
+                <select id="fpsMode">
+
+                    <option value="real">
+                        Реальное время
+                    </option>
+
+                    <option value="fast">
+                        Быстро
+                    </option>
+
+                    <option value="slow">
+                        Медленно
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="control">
+
+                <label for="background">
+                    Фон
+                </label>
+
+                <input
+                    id="background"
+                    type="color"
+                    value="#0b0f18"
+                >
+
+            </div>
+
+
+            <div class="control">
+
+                <label for="textColor">
+                    Цвет текста
+                </label>
+
+                <input
+                    id="textColor"
+                    type="color"
+                    value="#ffffff"
+                >
+
+            </div>
+
+
+            <div class="control">
+
+                <label for="cursorColor">
+                    Цвет курсора
+                </label>
+
+                <input
+                    id="cursorColor"
+                    type="color"
+                    value="#6f83ff"
+                >
+
+            </div>
+
+
+            <div class="control">
+
+                <label for="cursor">
+                    Курсор
+                </label>
+
+                <select id="cursor">
+
+                    <option value="true">
+                        Показывать
+                    </option>
+
+                    <option value="false">
+                        Скрывать
+                    </option>
+
+                </select>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- =================================================
+             BUTTONS
+             ================================================= -->
+
+        <div class="buttons">
+
+            <button
+                id="generateBtn"
+                class="primary"
+            >
+                Сгенерировать GIF
+            </button>
+
+
+            <button
+                id="clearBtn"
+                class="danger"
+            >
+                Очистить запись
+            </button>
+
+
+            <button
+                id="resetBtn"
+            >
+                Сбросить всё
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             STATS
+             ================================================= -->
+
+        <div class="stats">
+
+
+            <div class="stat">
+
+                <div class="stat-title">
+                    Зафиксировано изменений
+                </div>
+
+                <div
+                    id="changesCount"
+                    class="stat-value"
+                >
+                    0
+                </div>
+
+            </div>
+
+
+            <div class="stat">
+
+                <div class="stat-title">
+                    Символов сейчас
+                </div>
+
+                <div
+                    id="charsCount"
+                    class="stat-value"
+                >
+                    0
+                </div>
+
+            </div>
+
+
+            <div class="stat">
+
+                <div class="stat-title">
+                    Продолжительность
+                </div>
+
+                <div
+                    id="duration"
+                    class="stat-value"
+                >
+                    0.0 сек
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- =================================================
+             PROGRESS
+             ================================================= -->
+
+        <div
+            id="progressWrap"
+            class="progress-wrap"
+        >
+
+            <div class="progress-info">
+
+                <span id="progressText">
+                    Подготовка...
+                </span>
+
+                <span id="progressPercent">
+                    0%
+                </span>
+
+            </div>
+
+
+            <div class="progress">
+
+                <div
+                    id="progressBar"
+                    class="progress-bar"
+                ></div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             PREVIEW
+             ================================================= -->
+
+        <div class="preview-section">
+
+
+            <div class="preview-title">
+
+                <h2>
+                    Результат
+                </h2>
+
+                <span
+                    id="status"
+                    class="status"
+                >
+                    Ожидание
+                </span>
+
+            </div>
+
+
+            <div
+                id="preview"
+                class="preview"
+            >
+
+                <div class="empty-preview">
+                    Здесь появится GIF
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- =================================================
+             РЕКЛАМА №2
+             ================================================= -->
+
+        <div class="ad-wrapper">
+
+            <div class="ad-box">
+
+                <!--
+                    =================================================
+                    НИЖНИЙ БЛОК РСЯ
+                    =================================================
+
+                    Используй отдельный рекламный блок РСЯ.
+
+                    Например:
+
+                    <div id="yandex_rtb_R-A-XXXXXXXX-2"></div>
+
+                    <script>
+                        window.yaContextCb.push(() => {
+                            Ya.Context.AdvManager.render({
+                                "blockId": "R-A-XXXXXXXX-2",
+                                "renderTo": "yandex_rtb_R-A-XXXXXXXX-2"
+                            })
+                        })
+                    </script>
+                -->
+
+                <div class="ad-placeholder">
+                    Рекламный блок
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             NOTICE
+             ================================================= -->
+
+        <div class="notice">
+
+            Каждое событие изменения текста записывается отдельно.
+            Поэтому если вы сначала написали «Привт», затем удалили
+            «т», а потом написали «ет», GIF покажет именно эти действия,
+            а не искусственную печать готового текста «Привет».
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+/*
+    ============================================================
+    TEXT → TYPING GIF
+    ============================================================
+*/
+
+
+// ============================================================
+// DOM
+// ============================================================
+
+const textInput =
+    document.getElementById("textInput");
+
+const generateBtn =
+    document.getElementById("generateBtn");
+
+const clearBtn =
+    document.getElementById("clearBtn");
+
+const resetBtn =
+    document.getElementById("resetBtn");
+
+const changesCount =
+    document.getElementById("changesCount");
+
+const charsCount =
+    document.getElementById("charsCount");
+
+const durationElement =
+    document.getElementById("duration");
+
+const widthInput =
+    document.getElementById("width");
+
+const heightInput =
+    document.getElementById("height");
+
+const fontSizeInput =
+    document.getElementById("fontSize");
+
+const fpsMode =
+    document.getElementById("fpsMode");
+
+const backgroundInput =
+    document.getElementById("background");
+
+const textColorInput =
+    document.getElementById("textColor");
+
+const cursorColorInput =
+    document.getElementById("cursorColor");
+
+const cursorInput =
+    document.getElementById("cursor");
+
+const preview =
+    document.getElementById("preview");
+
+const statusElement =
+    document.getElementById("status");
+
+const progressWrap =
+    document.getElementById("progressWrap");
+
+const progressBar =
+    document.getElementById("progressBar");
+
+const progressText =
+    document.getElementById("progressText");
+
+const progressPercent =
+    document.getElementById("progressPercent");
+
+
+// ============================================================
+// STATE
+// ============================================================
+
+let history = [];
+
+let recordingStartedAt =
+    performance.now();
+
+let isGenerating = false;
+
+
+// ============================================================
+// INITIAL STATE
+// ============================================================
+
+history.push({
+
+    text: "",
+
+    timestamp:
+        recordingStartedAt,
+
+    selectionStart: 0,
+
+    selectionEnd: 0,
+
+    inputType:
+        "initial"
+
+});
+
+
+// ============================================================
+// RECORD EVERY REAL TEXT CHANGE
+// ============================================================
+
+textInput.addEventListener(
+    "input",
+    function(event) {
+
+        const now =
+            performance.now();
+
+
+        history.push({
+
+            /*
+                Сохраняем именно фактическое состояние textarea
+                после изменения.
+            */
+
+            text:
+                textInput.value,
+
+
+            /*
+                Реальное время события.
+            */
+
+            timestamp:
+                now,
+
+
+            /*
+                Положение курсора.
+            */
+
+            selectionStart:
+                textInput.selectionStart,
+
+
+            selectionEnd:
+                textInput.selectionEnd,
+
+
+            /*
+                Тип операции браузера.
+
+                Например:
+
+                insertText
+                deleteContentBackward
+                deleteContentForward
+                insertFromPaste
+                historyUndo
+                historyRedo
+            */
+
+            inputType:
+                event.inputType || "unknown",
+
+
+            data:
+                event.data || null
+
+        });
+
+
+        updateStats();
+
+    }
+);
+
+
+// ============================================================
+// STATISTICS
+// ============================================================
+
+function updateStats() {
+
+    const count =
+        Math.max(
+            0,
+            history.length - 1
+        );
+
+
+    changesCount.textContent =
+        count;
+
+
+    charsCount.textContent =
+        textInput.value.length;
+
+
+    if (history.length > 1) {
+
+        const first =
+            history[0].timestamp;
+
+
+        const last =
+            history[history.length - 1].timestamp;
+
+
+        const seconds =
+            Math.max(
+                0,
+                (last - first) / 1000
+            );
+
+
+        durationElement.textContent =
+            seconds.toFixed(1) +
+            " сек";
+
+    } else {
+
+        durationElement.textContent =
+            "0.0 сек";
+    }
+}
+
+
+// ============================================================
+// CLEAR RECORDING
+// ============================================================
+
+clearBtn.addEventListener(
+    "click",
+    function() {
+
+        history = [];
+
+        recordingStartedAt =
+            performance.now();
+
+
+        history.push({
+
+            text:
+                textInput.value,
+
+            timestamp:
+                recordingStartedAt,
+
+            selectionStart:
+                textInput.selectionStart,
+
+            selectionEnd:
+                textInput.selectionEnd,
+
+            inputType:
+                "recording-reset"
+
+        });
+
+
+        updateStats();
+
+
+        statusElement.textContent =
+            "Запись очищена";
+
+    }
+);
+
+
+// ============================================================
+// RESET EVERYTHING
+// ============================================================
+
+resetBtn.addEventListener(
+    "click",
+    function() {
+
+        textInput.value =
+            "";
+
+
+        history = [];
+
+
+        recordingStartedAt =
+            performance.now();
+
+
+        history.push({
+
+            text: "",
+
+            timestamp:
+                recordingStartedAt,
+
+            selectionStart: 0,
+
+            selectionEnd: 0,
+
+            inputType:
+                "initial"
+
+        });
+
+
+        preview.innerHTML = `
+            <div class="empty-preview">
+                Здесь появится GIF
+            </div>
+        `;
+
+
+        statusElement.textContent =
+            "Ожидание";
+
+
+        updateStats();
+
+    }
+);
+
+
+// ============================================================
+// TEXT WRAPPING
+// ============================================================
+
+function wrapText(
+    ctx,
+    text,
+    maxWidth
+) {
+
+    const lines = [];
+
+    const paragraphs =
+        text.split("\n");
+
+
+    for (
+        const paragraph of paragraphs
+    ) {
+
+        if (paragraph === "") {
+
+            lines.push("");
+
+            continue;
+        }
+
+
+        const words =
+            paragraph.split(" ");
+
+
+        let currentLine =
+            "";
+
+
+        for (
+            const word of words
+        ) {
+
+            const testLine =
+                currentLine === ""
+                    ? word
+                    : currentLine + " " + word;
+
+
+            const width =
+                ctx.measureText(
+                    testLine
+                ).width;
+
+
+            if (
+                width <= maxWidth ||
+                currentLine === ""
+            ) {
+
+                currentLine =
+                    testLine;
+
+            } else {
+
+                lines.push(
+                    currentLine
+                );
+
+
+                currentLine =
+                    word;
+            }
+        }
+
+
+        lines.push(
+            currentLine
+        );
+    }
+
+
+    return lines;
+}
+
+
+// ============================================================
+// DRAW FRAME
+// ============================================================
+
+function drawFrame(
+    canvas,
+    state,
+    options
+) {
+
+    /*
+        ========================================================
+        ВАЖНОЕ ИСПРАВЛЕНИЕ
+
+        Canvas используется для большого количества операций
+        чтения пикселей gif.js.
+
+        Поэтому включаем willReadFrequently.
+        ========================================================
+    */
+
+    const ctx =
+        canvas.getContext(
+            "2d",
+            {
+                willReadFrequently:
+                    true
+            }
+        );
+
+
+    const width =
+        canvas.width;
+
+
+    const height =
+        canvas.height;
+
+
+    // --------------------------------------------------------
+    // BACKGROUND
+    // --------------------------------------------------------
+
+    ctx.fillStyle =
+        options.background;
+
+
+    ctx.fillRect(
+        0,
+        0,
+        width,
+        height
+    );
+
+
+    // --------------------------------------------------------
+    // FONT
+    // --------------------------------------------------------
+
+    const fontSize =
+        options.fontSize;
+
+
+    ctx.font =
+        `${fontSize}px "SFMono-Regular", Consolas, ` +
+        `"Liberation Mono", Menlo, monospace`;
+
+
+    ctx.textBaseline =
+        "top";
+
+
+    ctx.fillStyle =
+        options.textColor;
+
+
+    // --------------------------------------------------------
+    // TEXT POSITION
+    // --------------------------------------------------------
+
+    const padding =
+        35;
+
+
+    const maxWidth =
+        width -
+        padding * 2;
+
+
+    const lineHeight =
+        Math.round(
+            fontSize * 1.55
+        );
+
+
+    const lines =
+        wrapText(
+            ctx,
+            state.text,
+            maxWidth
+        );
+
+
+    let y =
+        padding;
+
+
+    // --------------------------------------------------------
+    // CURSOR POSITION
+    // --------------------------------------------------------
+
+    let cursorX =
+        padding;
+
+
+    let cursorY =
+        padding;
+
+
+    const cursorPosition =
+        typeof state.selectionStart === "number"
+            ? state.selectionStart
+            : state.text.length;
+
+
+    const beforeCursor =
+        state.text.substring(
+            0,
+            cursorPosition
+        );
+
+
+    const cursorLines =
+        beforeCursor.split("\n");
+
+
+    if (
+        cursorLines.length === 1
+    ) {
+
+        cursorX =
+            padding +
+            ctx.measureText(
+                cursorLines[0]
+            ).width;
+
+
+        cursorY =
+            padding;
+
+    } else {
+
+        const currentLine =
+            cursorLines[
+                cursorLines.length - 1
+            ];
+
+
+        cursorX =
+            padding +
+            ctx.measureText(
+                currentLine
+            ).width;
+
+
+        cursorY =
+            padding +
+            (
+                cursorLines.length - 1
+            ) *
+            lineHeight;
+    }
+
+
+    // --------------------------------------------------------
+    // DRAW TEXT
+    // --------------------------------------------------------
+
+    for (
+        const line of lines
+    ) {
+
+        ctx.fillText(
+            line,
+            padding,
+            y
+        );
+
+
+        y += lineHeight;
+    }
+
+
+    // --------------------------------------------------------
+    // DRAW CURSOR
+    // --------------------------------------------------------
+
+    if (
+        options.showCursor
+    ) {
+
+        ctx.save();
+
+
+        ctx.fillStyle =
+            options.cursorColor;
+
+
+        ctx.fillRect(
+
+            cursorX,
+
+            cursorY,
+
+            Math.max(
+                2,
+                fontSize * 0.07
+            ),
+
+            fontSize * 1.25
+
+        );
+
+
+        ctx.restore();
+    }
+}
+
+
+// ============================================================
+// FRAME DELAY
+// ============================================================
+
+function calculateDelay(
+    current,
+    next
+) {
+
+    let delay;
+
+
+    if (next) {
+
+        delay =
+            next.timestamp -
+            current.timestamp;
+
+    } else {
+
+        delay =
+            1000;
+    }
+
+
+    switch (
+        fpsMode.value
+    ) {
+
+        case "fast":
+
+            delay *=
+                0.45;
+
+            break;
+
+
+        case "slow":
+
+            delay *=
+                1.8;
+
+            break;
+
+
+        case "real":
+
+        default:
+
+            break;
+    }
+
+
+    /*
+        GIF не любит слишком маленькие значения.
+        Также не даём случайной большой паузе пользователя
+        превратить один кадр в несколько секунд ожидания.
+    */
+
+    delay =
+        Math.max(
+            20,
+            Math.min(
+                delay,
+                3000
+            )
+        );
+
+
+    return Math.round(
+        delay
+    );
+}
+
+
+// ============================================================
+// GENERATE GIF
+// ============================================================
+
+generateBtn.addEventListener(
+    "click",
+    generateGif
+);
+
+
+async function generateGif() {
+
+    if (isGenerating) {
+        return;
+    }
+
+
+    // --------------------------------------------------------
+    // CHECK GIF.JS
+    // --------------------------------------------------------
+
+    if (
+        !window.GIF
+    ) {
+
+        alert(
+            "Не удалось загрузить локальный gif.js."
+        );
+
+
+        console.error(
+            "GIF library was not found."
+        );
+
+
+        return;
+    }
+
+
+    // --------------------------------------------------------
+    // CHECK HISTORY
+    // --------------------------------------------------------
+
+    if (
+        history.length < 2
+    ) {
+
+        alert(
+            "Сначала напишите хотя бы что-нибудь."
+        );
+
+
+        return;
+    }
+
+
+    isGenerating =
+        true;
+
+
+    generateBtn.disabled =
+        true;
+
+
+    statusElement.textContent =
+        "Генерация...";
+
+
+    progressWrap.classList.add(
+        "visible"
+    );
+
+
+    progressBar.style.width =
+        "0%";
+
+
+    progressPercent.textContent =
+        "0%";
+
+
+    // --------------------------------------------------------
+    // OPTIONS
+    // --------------------------------------------------------
+
+    const width =
+        clamp(
+            parseInt(
+                widthInput.value,
+                10
+            ) || 800,
+            200,
+            1600
+        );
+
+
+    const height =
+        clamp(
+            parseInt(
+                heightInput.value,
+                10
+            ) || 450,
+            100,
+            1200
+        );
+
+
+    const fontSize =
+        clamp(
+            parseInt(
+                fontSizeInput.value,
+                10
+            ) || 28,
+            10,
+            100
+        );
+
+
+    const options = {
+
+        width,
+
+        height,
+
+        fontSize,
+
+        background:
+            backgroundInput.value,
+
+        textColor:
+            textColorInput.value,
+
+        cursorColor:
+            cursorColorInput.value,
+
+        showCursor:
+            cursorInput.value === "true"
+
+    };
+
+
+    // --------------------------------------------------------
+    // CANVAS
+    // --------------------------------------------------------
+
+    const canvas =
+        document.createElement(
+            "canvas"
+        );
+
+
+    canvas.width =
+        width;
+
+
+    canvas.height =
+        height;
+
+
+    // --------------------------------------------------------
+    // GIF ENCODER
+    // --------------------------------------------------------
+
+    /*
+        ========================================================
+        ВАЖНОЕ ИСПРАВЛЕНИЕ
+
+        Worker теперь загружается ЛОКАЛЬНО.
+
+        Файлы должны находиться:
+
+        /index.html
+        /gif.js
+        /gif.worker.js
+        ========================================================
+    */
+
+    const gif =
+        new GIF({
+
+            workers:
+                2,
+
+            quality:
+                10,
+
+            width:
+                width,
+
+            height:
+                height,
+
+            workerScript:
+                "./gif.worker.js"
+
+        });
+
+
+    // --------------------------------------------------------
+    // ADD FRAMES
+    // --------------------------------------------------------
+
+    const total =
+        history.length;
+
+
+    for (
+        let i = 0;
+        i < total;
+        i++
+    ) {
+
+        const state =
+            history[i];
+
+
+        const next =
+            history[i + 1];
+
+
+        /*
+            Рисуем именно состояние textarea,
+            которое существовало в конкретный момент.
+        */
+
+        drawFrame(
+            canvas,
+            state,
+            options
+        );
+
+
+        const delay =
+            calculateDelay(
+                state,
+                next
+            );
+
+
+        gif.addFrame(
+            canvas,
+            {
+
+                copy:
+                    true,
+
+                delay:
+                    delay
+
+            }
+        );
+
+
+        // ----------------------------------------------------
+        // PROGRESS
+        // ----------------------------------------------------
+
+        const percent =
+            Math.round(
+                ((i + 1) / total) *
+                60
+            );
+
+
+        progressBar.style.width =
+            percent + "%";
+
+
+        progressPercent.textContent =
+            percent + "%";
+
+
+        progressText.textContent =
+            `Подготовка кадра ${i + 1} из ${total}`;
+
+
+        await nextFrame();
+    }
+
+
+    // --------------------------------------------------------
+    // RENDER GIF
+    // --------------------------------------------------------
+
+    progressText.textContent =
+        "Кодирование GIF...";
+
+
+    gif.on(
+        "progress",
+        function(progress) {
+
+            const percent =
+                60 +
+                Math.round(
+                    progress * 40
+                );
+
+
+            progressBar.style.width =
+                percent + "%";
+
+
+            progressPercent.textContent =
+                percent + "%";
+
+        }
+    );
+
+
+    // --------------------------------------------------------
+    // FINISHED
+    // --------------------------------------------------------
+
+    gif.on(
+        "finished",
+        function(blob) {
+
+            const url =
+                URL.createObjectURL(
+                    blob
+                );
+
+
+            // ------------------------------------------------
+            // PREVIEW
+            // ------------------------------------------------
+
+            preview.innerHTML =
+                "";
+
+
+            const img =
+                document.createElement(
+                    "img"
+                );
+
+
+            img.src =
+                url;
+
+
+            img.alt =
+                "Generated typing GIF";
+
+
+            preview.appendChild(
+                img
+            );
+
+
+            // ------------------------------------------------
+            // DOWNLOAD
+            // ------------------------------------------------
+
+            const downloadButton =
+                document.createElement(
+                    "button"
+                );
+
+
+            downloadButton.className =
+                "primary";
+
+
+            downloadButton.textContent =
+                "Скачать GIF";
+
+
+            downloadButton.addEventListener(
+                "click",
+                function() {
+
+                    const link =
+                        document.createElement(
+                            "a"
+                        );
+
+
+                    link.href =
+                        url;
+
+
+                    link.download =
+                        "typing-process.gif";
+
+
+                    document.body.appendChild(
+                        link
+                    );
+
+
+                    link.click();
+
+
+                    link.remove();
+
+                }
+            );
+
+
+            const buttonContainer =
+                document.createElement(
+                    "div"
+                );
+
+
+            buttonContainer.style.marginTop =
+                "12px";
+
+
+            buttonContainer.style.display =
+                "flex";
+
+
+            buttonContainer.style.justifyContent =
+                "center";
+
+
+            buttonContainer.appendChild(
+                downloadButton
+            );
+
+
+            preview.appendChild(
+                buttonContainer
+            );
+
+
+            // ------------------------------------------------
+            // COMPLETE
+            // ------------------------------------------------
+
+            progressBar.style.width =
+                "100%";
+
+
+            progressPercent.textContent =
+                "100%";
+
+
+            progressText.textContent =
+                "Готово";
+
+
+            statusElement.textContent =
+                "GIF готов";
+
+
+            isGenerating =
+                false;
+
+
+            generateBtn.disabled =
+                false;
+
+        }
+    );
+
+
+    // --------------------------------------------------------
+    // ABORT
+    // --------------------------------------------------------
+
+    gif.on(
+        "abort",
+        function() {
+
+            statusElement.textContent =
+                "Генерация отменена";
+
+
+            isGenerating =
+                false;
+
+
+            generateBtn.disabled =
+                false;
+
+        }
+    );
+
+
+    // --------------------------------------------------------
+    // START
+    // --------------------------------------------------------
+
+    gif.render();
+}
+
+
+// ============================================================
+// HELPERS
+// ============================================================
+
+function clamp(
+    value,
+    min,
+    max
+) {
+
+    return Math.min(
+        Math.max(
+            value,
+            min
+        ),
+        max
+    );
+}
+
+
+function nextFrame() {
+
+    return new Promise(
+        resolve => {
+
+            requestAnimationFrame(
+                () => resolve()
+            );
+
+        }
+    );
+}
+
+
+// ============================================================
+// INITIAL UI
+// ============================================================
+
+updateStats();
+
+</script>
+
+</body>
+</html>

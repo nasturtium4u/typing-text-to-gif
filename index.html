@@ -20,43 +20,9 @@
     <header class="header">
         <h1>Typing Text → GIF</h1>
         <p>
-            Запишите процесс набора текста и создайте GIF
-            со всеми реальными изменениями, включая опечатки и исправления.
+            Напишите текст, исправляйте опечатки и редактируйте его как обычно. Сайт запишет каждое изменение и превратит реальный процесс редактирования в GIF-анимацию.
         </p>
     </header>
-
-
-    <!-- =========================
-         РЕКЛАМА №1
-         ========================= -->
-
-    <div class="ad-wrapper">
-        <div class="ad-box">
-
-            <!--
-                Здесь позже можно разместить код РСЯ.
-
-                Например:
-
-                <div id="yandex_rtb_R-A-XXXXXXXX-1"></div>
-
-                <script>
-                    window.yaContextCb.push(() => {
-                        Ya.Context.AdvManager.render({
-                            "blockId": "R-A-XXXXXXXX-1",
-                            "renderTo": "yandex_rtb_R-A-XXXXXXXX-1"
-                        });
-                    });
-                </script>
-            -->
-
-            <div class="ad-placeholder">
-                Рекламный блок
-            </div>
-
-        </div>
-    </div>
-
 
     <!-- =========================
          РЕДАКТОР
@@ -341,49 +307,11 @@
 
     </section>
 
-
-    <!-- =========================
-         РЕКЛАМА №2
-         ========================= -->
-
-    <div class="ad-wrapper">
-
-        <div class="ad-box">
-
-            <!--
-                Здесь второй рекламный блок РСЯ.
-
-                Например:
-
-                <div id="yandex_rtb_R-A-XXXXXXXX-2"></div>
-
-                <script>
-                    window.yaContextCb.push(() => {
-                        Ya.Context.AdvManager.render({
-                            "blockId": "R-A-XXXXXXXX-2",
-                            "renderTo": "yandex_rtb_R-A-XXXXXXXX-2"
-                        });
-                    });
-                </script>
-            -->
-
-            <div class="ad-placeholder">
-                Рекламный блок
-            </div>
-
-        </div>
-
-    </div>
-
-
     <div class="notice">
-
-        <strong>Важно:</strong>
-
-        Для генерации GIF используется локальный
-        <code>gif.js</code> и
-        <code>gif.worker.js</code>.
-
+        Каждое событие изменения текста записывается отдельно.
+        Поэтому если вы сначала написали «Привт», затем удалили «т»,
+        а потом написали «ет», GIF покажет именно эти действия,
+        а не искусственную печать конечного текста «Привет».
     </div>
 
 </div>
